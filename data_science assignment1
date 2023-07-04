@@ -1,0 +1,89 @@
+Q1.def reverse_string(string):
+    reversed_string = ''
+    index = len(string) - 1
+
+    while index >= 0:
+        reversed_string += string[index]
+        index -= 1
+
+    return reversed_string
+
+input_string = input("Enter a string: ")
+reversed_string = reverse_string(input_string)
+print("Reversed string:", reversed_string)
+
+      #output
+Enter a string:  gaurish
+Reversed string: hsiruag
+
+
+
+  Q2.def is_palindrome(string):
+    # Remove whitespace and convert to lowercase
+    string = string.replace(" ", "").lower()
+
+    # Check if the reversed string is equal to the original string
+    return string == string[::-1]
+
+      input_string = input("Enter a string: ")
+if is_palindrome(input_string):
+    print("The string is a palindrome.")
+else:
+    print("The string is not a palindrome.")
+
+      #output
+Enter a string:  nitin
+The string is a palindrome.
+
+
+Q3.def find_largest_element(lst):
+    if not lst:
+        return None
+
+    largest = lst[0]  # Assume the first element is the largest
+
+    for element in lst:
+        if element > largest:
+            largest = element
+
+    return largest
+
+          input_list = input("Enter a list of numbers (separated by spaces): ").split()
+input_list = [int(num) for num in input_list]  # Convert input strings to integers
+largest_element = find_largest_element(input_list)
+print("The largest element is:", largest_element)
+
+          #output
+Enter a list of numbers (separated by spaces):  23 34 45 67 89
+The largest element is: 89
+
+
+  Q.4. def count_occurrences(lst):
+    occurrence_count = {}
+
+    for element in lst:
+        if element in occurrence_count:
+            occurrence_count[element] += 1
+        else:
+            occurrence_count[element] = 1
+
+    return occurrence_count
+
+      input_list = input("Enter a list of elements (separated by spaces): ").split()
+occurrence_count = count_occurrences(input_list)
+print("Element occurrence count:")
+for element, count in occurrence_count.items():
+    print(element, "->", count)
+
+      #output
+Enter a list of elements (separated by spaces):  12 34 56 78 89 12
+Element occurrence count:
+12 -> 2
+34 -> 1
+56 -> 1
+78 -> 1
+89 -> 1
+
+
+  Q5.
+​
