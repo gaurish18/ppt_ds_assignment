@@ -383,3 +383,567 @@ print("Reversed sentence:", reversed_sentence)
 Enter a sentence:  Kane was a monster in wwe 
 Reversed sentence: wwe in monster a was Kane
 ​
+
+Q21.def are_anagrams(string1, string2):
+    # Convert the strings to lowercase and remove whitespace
+    string1 = string1.lower().replace(" ", "")
+    string2 = string2.lower().replace(" ", "")
+
+    # Check if the sorted characters of both strings are equal
+    return sorted(string1) == sorted(string2)
+
+input_string1 = "heart"
+input_string2 = "earth"
+result = are_anagrams(input_string1, input_string2)
+print(result)
+
+#output
+True
+
+
+Q.22.def find_first_non_repeating_character(string):
+    char_count = {}
+    
+    # Count the occurrences of each character
+    for char in string:
+        char_count[char] = char_count.get(char, 0) + 1
+    
+    # Find the first non-repeating character
+    for char in string:
+        if char_count[char] == 1:
+            return char
+    
+    # If no non-repeating character found, return None
+    return None
+
+input_string = "abacabad"
+result = find_first_non_repeating_character(input_string)
+print(result) 
+
+#output
+c
+
+Q.23.def find_prime_factors(number):
+    factors = []
+    divisor = 2
+
+    while divisor <= number:
+        if number % divisor == 0:
+            factors.append(divisor)
+            number //= divisor
+        else:
+            divisor += 1
+
+    return factors
+
+input_number = 78
+result = find_prime_factors(input_number)
+print(result)  
+
+#output
+[2, 3, 13]
+
+
+
+Q.24.def is_power_of_two(number):
+    if number <= 0:
+        return False
+    
+    # Check if the number is a power of two by performing bitwise operations
+
+    return (number & (number - 1)) == 0
+
+
+input_number = 64
+result = is_power_of_two(input_number)
+print(result)  # Output: True
+
+#output
+True
+
+
+Q.25.def merge_sorted_lists(list1, list2):
+    merged_list = []
+    i = j = 0
+
+    while i < len(list1) and j < len(list2):
+        if list1[i] <= list2[j]:
+            merged_list.append(list1[i])
+            i += 1
+        else:
+            merged_list.append(list2[j])
+            j += 1
+
+   
+    merged_list.extend(list1[i:])
+    merged_list.extend(list2[j:])
+
+    return merged_list
+
+input_list1 = [1, 3, 5, 7]
+input_list2 = [2, 4, 6, 8]
+result = merge_sorted_lists(input_list1, input_list2)
+print(result)  
+
+#output
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+
+
+Q.26.from collections import Counter
+
+def find_mode(numbers):
+    # Use Counter to count the occurrences of each number
+    number_counts = Counter(numbers)
+
+    # Find the maximum count
+    max_count = max(number_counts.values())
+
+    # Find all numbers with the maximum count (the mode)
+    mode = [number for number, count in number_counts.items() if count == max_count]
+
+    return mode
+
+input_numbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+result = find_mode(input_numbers)
+print(result) 
+
+#Output 
+[4]
+
+Q.27. def find_gcd(number1, number2):
+    while number2 != 0:
+        number1, number2 = number2, number1 % number2
+    
+    return number1
+
+input_number1 = 36
+input_number2 = 48
+result = find_gcd(input_number1, input_number2)
+print(result)
+
+#Output: 12
+
+
+Q.28.def calculate_square_root(number):
+    if number < 0:
+        raise ValueError("Square root is undefined for negative numbers.")
+    
+    if number == 0:
+        return 0
+
+    # Initialize the initial guess for the square root
+    guess = number / 2
+
+    # Iterate until the guess is close enough to the actual square root
+    while True:
+        new_guess = (guess + number / guess) / 2
+        if abs(new_guess - guess) < 1e-9:  # Adjust the tolerance as needed
+            return new_guess
+        guess = new_guess
+
+input_number = 16
+result = calculate_square_root(input_number)
+print(result) 
+
+#Output: 4.0
+
+
+Q.29.import re
+
+def is_valid_palindrome(string):
+    # Remove non-alphanumeric characters and convert to lowercase
+    alphanumeric_string = re.sub(r'[^a-zA-Z0-9]', '', string).lower()
+
+    # Check if the alphanumeric string is a palindrome
+    return alphanumeric_string == alphanumeric_string[::-1]
+
+input_string = "A man, a plan, a canal: Panama"
+result = is_valid_palindrome(input_string)
+print(result)  
+
+#Output: True
+
+
+Q.30.def find_minimum_element(rotated_list):
+    left = 0
+    right = len(rotated_list) - 1
+
+    while left < right:
+        mid = left + (right - left) // 2
+
+        if rotated_list[mid] > rotated_list[right]:
+            left = mid + 1
+        else:
+            right = mid
+
+    return rotated_list[left]
+
+
+input_list = [4, 5, 6, 7, 0, 1, 2]
+result = find_minimum_element(input_list)
+print(result) 
+
+#Output: 0
+
+
+Q.31.def sum_even_numbers(numbers):
+    total = 0
+    for num in numbers:
+        if num % 2 == 0:  # Check if the number is even
+            total += num
+    return total
+
+
+numbers_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sum_even = sum_even_numbers(numbers_list)
+print("Sum of even numbers:", sum_even)
+
+#output
+Sum of even numbers: 30
+
+
+Q.32.def power(base, exponent):
+    if exponent == 0:
+        return 1
+    elif exponent < 0:
+        return 1 / power(base, -exponent)
+    else:
+        return base * power(base, exponent - 1)
+
+
+base = 2
+exponent = 3
+result = power(base, exponent)
+print(f"{base} raised to the power of {exponent} is: {result}")
+
+#output
+2 raised to the power of 3 is: 8
+
+
+
+Q.33.def remove_duplicates(input_list):
+    unique_list = []
+    for item in input_list:
+        if item not in unique_list:
+            unique_list.append(item)
+    return unique_list
+
+
+input_list = [1, 2, 3, 2, 4, 1, 5, 4]
+result_list = remove_duplicates(input_list)
+print("List with duplicates removed:", result_list)
+
+#output
+List with duplicates removed: [1, 2, 3, 4, 5]
+
+
+Q.34.def longest_common_prefix(strings):
+    if not strings:
+        return ""
+
+    prefix = strings[0]
+    for string in strings[1:]:
+        while string[:len(prefix)] != prefix:
+            prefix = prefix[:-1]
+            if not prefix:
+                return ""
+    return prefix
+
+
+string_list = ["flower", "flow", "flight"]
+common_prefix = longest_common_prefix(string_list)
+print("Longest common prefix:", common_prefix)
+
+#output
+Longest common prefix: fl
+​
+
+Q.35. def is_perfect_square(number):
+    if number < 0:
+        return False
+    if number == 0:
+        return True
+
+    # Use binary search to find the square root
+    left = 1
+    right = number
+    while left <= right:
+        mid = (left + right) // 2
+        square = mid * mid
+        if square == number:
+            return True
+        elif square < number:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return False
+
+
+num = 169
+if is_perfect_square(num):
+    print(num, "is a perfect square")
+else:
+    print(num, "is not a perfect square")
+
+
+#output
+169 is a perfect square
+​
+
+
+Q.36.def calculate_product(numbers):
+    if not numbers:
+        return 1
+
+    product = 1
+    for num in numbers:
+        product *= num
+    return product
+
+
+number_list = [2, 3, 4, 5]
+result = calculate_product(number_list)
+print("Product of the numbers:", result)
+
+#output
+Product of the numbers: 120
+​
+
+Q.37.def reverse_words(sentence):
+    words = sentence.split()
+    reversed_words = words[::-1]
+
+    reversed_sentence = ' '.join(reversed_words)
+
+return reversed_sentence
+
+
+sentence = "Hello, how are you?"
+reversed_sentence = reverse_words(sentence)
+print("Reversed sentence:", reversed_sentence)
+
+#Output
+Reversed sentence: you? are how Hello,
+
+
+Q.38.def find_missing_number(numbers):
+    n = len(numbers) + 1  # Total numbers including the missing one
+    expected_sum = (n * (n + 1)) // 2  # Sum of all numbers from 1 to n
+
+    actual_sum = sum(numbers)  # Sum of the given numbers
+    missing_number = expected_sum - actual_sum
+
+    return missing_number
+
+number_list = [1, 2, 3, 5, 6, 7]
+missing_num = find_missing_number(number_list)
+print("Missing number:", missing_num
+
+#output
+Missing number: 4
+
+
+Q.39.def sum_of_digits(number):
+    # Convert the number to a string to iterate over its digits
+    number_str = str(number)
+​
+    # Initialize a variable to hold the sum of digits
+    digit_sum = 0
+​
+    # Iterate over each character (digit) in the number string
+    for digit in number_str:
+        # Convert the digit back to an integer and add it to the sum
+        digit_sum += int(digit)
+​
+    return digit_sum
+​
+
+num = 67867
+digit_sum = sum_of_digits(num)
+print("Sum of digits:", digit_sum)
+​
+Sum of digits: 34
+
+
+Q.40.def is_valid_palindrome(input_string):
+    # Remove any non-alphanumeric characters and convert to lowercase
+    alphanumeric_string = ''.join(char.lower() for char in input_string if char.isalnum())
+
+    # Check if the alphanumeric string is equal to its reverse
+    return alphanumeric_string == alphanumeric_string[::-1]
+
+
+string = "A man, a plan, a canal: Panama"
+if is_valid_palindrome(string):
+    print("The string is a valid palindrome.")
+else:
+    print("The string is not a valid palindrome.")
+
+#output
+The string is a valid palindrome.
+​
+
+Q.41.def find_smallest_missing_positive(nums):
+    n = len(nums)
+
+    # Step 1: Transform the list
+    # Replace negative numbers and numbers greater than n with 0
+    for i in range(n):
+        if nums[i] <= 0 or nums[i] > n:
+            nums[i] = 0
+
+    # Step 2: Mark visited numbers
+    # Use the indices of the list to mark visited numbers
+    for i in range(n):
+        num = abs(nums[i])
+        if num != 0 and nums[num - 1] > 0:
+            nums[num - 1] *= -1
+
+    # Step 3: Find the smallest missing positive integer
+    for i in range(n):
+        if nums[i] >= 0:
+            return i + 1
+
+    # If no positive numbers found, the smallest missing positive is n + 1
+    return n + 1
+
+
+numbers = [3, 4, -1, 1]
+smallest_missing = find_smallest_missing_positive(numbers)
+print("Smallest missing positive integer:", smallest_missing)
+
+#output
+Smallest missing positive integer: 2
+
+
+Q.42.def longest_palindrome_substring(s):
+    if not s:
+        return ""
+
+    start = 0
+    end = 0
+
+    for i in range(len(s)):
+        len1 = expand_around_center(s, i, i)  # Check for odd length palindromes
+        len2 = expand_around_center(s, i, i + 1)  # Check for even length palindromes
+        max_len = max(len1, len2)
+
+        if max_len > end - start:
+            start = i - (max_len - 1) // 2
+            end = i + max_len // 2
+
+    return s[start:end+1]
+
+def expand_around_center(s, left, right):
+    while left >= 0 and right < len(s) and s[left] == s[right]:
+        left -= 1
+        right += 1
+
+    return right - left - 1
+
+
+string = "babad"
+longest_palindrome = longest_palindrome_substring(string)
+print("Longest palindrome substring:", longest_palindrome)
+
+#output
+Longest palindrome substring: aba
+
+
+Q.43.def count_occurrences(lst, element):
+    count = 0
+    for item in lst:
+        if item == element:
+            count += 1
+    return count
+
+my_list = [1, 2, 3, 2, 4, 2, 5]
+element = 2
+occurrences = count_occurrences(my_list, element)
+print("Number of occurrences:", occurre
+
+occurrences = count_occurrences(my_list, element)
+print("Number of occurrences:", occurrences)
+
+​#output
+Number of occurrences: 3
+
+
+Q.44.def is_perfect_number(number):
+    if number <= 0:
+        return False
+
+    divisor_sum = 0
+    for i in range(1, number):
+        if number % i == 0:
+            divisor_sum += i
+
+    return divisor_sum == number
+
+
+num = 28
+if is_perfect_number(num):
+    print(num, "is a perfect number.")
+else:
+    print(num, "is not a perfect number.")
+
+#output
+28 is a perfect number.
+
+
+Q.45.def remove_duplicates(string):
+    # Create a set to store unique characters
+    unique_chars = set()
+
+    # Create a new string with unique characters
+    new_string = ""
+    for char in string:
+        if char not in unique_chars:
+            new_string += char
+            unique_chars.add(char)
+
+    return new_string
+
+
+input_string = "Hello, world!"
+result_string = remove_duplicates(input_string)
+print("String with duplicates removed:", result_string)
+
+#output
+String with duplicates removed: Helo, wrd!
+​
+
+Q.46.def find_first_missing_positive(nums):
+    n = len(nums)
+
+    # Step 1: Move all non-positive numbers to the beginning
+    j = 0
+    for i in range(n):
+        if nums[i] <= 0:
+            nums[i], nums[j] = nums[j], nums[i]
+            j += 1
+
+    # Step 2: Mark visited numbers
+    for i in range(j, n):
+        num = abs(nums[i])
+        if num <= n - j:
+            nums[j + num - 1] = -abs(nums[j + num - 1])
+
+    # Step 3: Find the first missing positive
+    for i in range(j, n):
+        if nums[i] > 0:
+            return i - j + 1
+
+    # If no positive numbers found, the first missing positive is n - j + 1
+    return n - j + 1
+
+
+numbers = [3, 4, -1, 1]
+first_missing = find_first_missing_positive(numbers)
+print("First missing positive integer:", first_missing)
+
+#output
+First missing positive integer: 2
+​
